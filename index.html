@@ -36,6 +36,11 @@
 		<script src="https://checkout.stripe.com/checkout.js"></script>
 
 		<script>
+			var amount = 499;
+			var currency = "usd";
+			var name = "Josh Castle";
+			var description = "All the World to Me";
+
 			window.onload = function(){
 				var handler = StripeCheckout.configure({
 					key: "pk_test_cYbsKr0LjAWDlLGQ3lcuWKqL",
@@ -44,16 +49,26 @@
 					token: function(token) {
 						// You can access the token ID with `token.id`.
 						// Get the token ID to your server-side code for use.
-
+						var url = "https://wt-571a318ca7efaac9a451328a77749a17-0.run.webtask.io/stripe-processor"
+						var request = new XMLHttpRequest();
+						request.open("POST", url, true);
+						request.setRequestHeader("Content-Type", "application/json");
+						request.send(JSON.stringify({
+							token,
+							description,
+							amount,
+							currency,
+						}));
 					}
 				});
 
 				document.getElementById("customButton").addEventListener("click", function(e) {
 					// Open Checkout with further options:
 					handler.open({
-						name: "Josh Castle",
-						description: "All the World to Me",
-						amount: 499
+						name,
+						description,
+						amount,
+						currency,
 					});
 					e.preventDefault();
 				});
