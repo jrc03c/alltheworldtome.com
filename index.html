@@ -25,12 +25,45 @@
 							</p>
 
 							<p class="has-text-centered">
-								<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XCCQJAJ2XBFSG" class="button buy-now-button has-background-black has-text-white">Buy now!</a>
+								<button id="customButton" class="button buy-now-button has-background-black has-text-white">Buy now!</button>
 							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		<section>
+
+		<script src="https://checkout.stripe.com/checkout.js"></script>
+
+		<script>
+			window.onload = function(){
+				var handler = StripeCheckout.configure({
+					key: "pk_test_cYbsKr0LjAWDlLGQ3lcuWKqL",
+					image: "https://stripe.com/img/documentation/checkout/marketplace.png",
+					locale: "auto",
+					token: function(token) {
+						// You can access the token ID with `token.id`.
+						// Get the token ID to your server-side code for use.
+
+					}
+				});
+
+				document.getElementById("customButton").addEventListener("click", function(e) {
+					// Open Checkout with further options:
+					handler.open({
+						name: "Josh Castle",
+						description: "All the World to Me",
+						amount: 499
+					});
+					e.preventDefault();
+				});
+
+				// Close Checkout on page navigation:
+				window.addEventListener("popstate", function() {
+					handler.close();
+				});
+			};
+		</script>
+
 	</body>
 </html>
