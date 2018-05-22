@@ -59,6 +59,12 @@
 							amount,
 							currency,
 						}));
+
+						request.onreadystatechange = function(){
+							if (request.status === 200){
+								window.location.replace("/thanks");
+							}
+						};
 					}
 				});
 
