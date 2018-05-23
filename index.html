@@ -13,24 +13,90 @@
 			<div class="container">
 				<div class="columns">
 					<div class="column is-6 is-offset-3">
-						<div class="has-text-centered header">
-							<img src="./res/img/boat.png" width="360">
-							<h1 class="title">All the World to Me</h1>
-							<h3 class="subtitle">by Josh Castle</h3>
+						<div class="has-text-centered" id="loading-gif" style="display:none;">
+							<img src="res/img/loading.gif">
 						</div>
 
-						<div>
-							<p>
-								<i>All the World to Me</i> is a book of poems for children. It is currently available in ebook (Kindle/MOBI) format, but will soon be available in physical form!
-							</p>
+						<div id="everything-else">
+							<div class="has-text-centered header">
+								<img src="./res/img/boat.png" width="360">
+								<h1 class="title">All the World to Me</h1>
+								<h3 class="subtitle">by Josh Castle</h3>
+							</div>
 
-							<p class="has-text-centered">
-								<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XCCQJAJ2XBFSG" class="button buy-now-button has-background-black has-text-white">Buy now!</a>
-							</p>
+							<div>
+								<p>
+									<i>All the World to Me</i> is a book of poems for children. It is currently available in ebook (Kindle/MOBI) format, but will soon be available in physical form!
+								</p>
+
+								<p class="has-text-centered">
+									<button id="customButton" class="button buy-now-button has-background-black has-text-white">Buy now!</button>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		<section>
+
+		<script src="https://checkout.stripe.com/checkout.js"></script>
+
+		<script>
+			var amount = 499;
+			var currency = "usd";
+			var name = "Josh Castle";
+			var description = "All the World to Me";
+
+			window.onload = function(){
+				var handler = StripeCheckout.configure({
+					key: "pk_live_NMpP0G7kK3VSQ0BtUWzJO2Ep",
+					image: "https://stripe.com/img/documentation/checkout/marketplace.png",
+					locale: "auto",
+					token: function(token) {
+						// You can access the token ID with `token.id`.
+						// Get the token ID to your server-side code for use.
+						var url = "https://wt-571a318ca7efaac9a451328a77749a17-0.run.webtask.io/stripe-processor"
+						var request = new XMLHttpRequest();
+						request.open("POST", url, true);
+						request.setRequestHeader("Content-Type", "application/json");
+						request.send(JSON.stringify({
+							token,
+							description,
+							amount,
+							currency,
+						}));
+
+						var loadingGif = document.getElementById("loading-gif");
+						var everythingElse = document.getElementById("everything-else");
+
+						loadingGif.style.display = "block";
+						everythingElse.style.display = "none";
+
+						request.onreadystatechange = function(){
+							if (request.status === 200){
+								window.location.replace("/thanks");
+							}
+						};
+					}
+				});
+
+				document.getElementById("customButton").addEventListener("click", function(e) {
+					// Open Checkout with further options:
+					handler.open({
+						name,
+						description,
+						amount,
+						currency,
+					});
+					e.preventDefault();
+				});
+
+				// Close Checkout on page navigation:
+				window.addEventListener("popstate", function() {
+					handler.close();
+				});
+			};
+		</script>
+
 	</body>
 </html>
