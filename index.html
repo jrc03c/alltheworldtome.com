@@ -42,60 +42,62 @@
 		<script src="https://checkout.stripe.com/checkout.js"></script>
 
 		<script>
-			var amount = 499;
-			var currency = "usd";
-			var name = "Josh Castle";
-			var description = "All the World to Me";
+			(function(){
+				window.onload = function(){
+					var amount = 499;
+					var currency = "usd";
+					var name = "Josh Castle";
+					var description = "All the World to Me";
+					var file = "alltheworldtome.mobi";
 
-			window.onload = function(){
-				var handler = StripeCheckout.configure({
-					key: "pk_live_NMpP0G7kK3VSQ0BtUWzJO2Ep",
-					image: "https://stripe.com/img/documentation/checkout/marketplace.png",
-					locale: "auto",
-					token: function(token) {
-						// You can access the token ID with `token.id`.
-						// Get the token ID to your server-side code for use.
-						var url = "https://wt-571a318ca7efaac9a451328a77749a17-0.run.webtask.io/stripe-processor"
-						var request = new XMLHttpRequest();
-						request.open("POST", url, true);
-						request.setRequestHeader("Content-Type", "application/json");
-						request.send(JSON.stringify({
-							token,
+					var handler = StripeCheckout.configure({
+						key: "pk_live_NMpP0G7kK3VSQ0BtUWzJO2Ep",
+						image: "https://stripe.com/img/documentation/checkout/marketplace.png",
+						locale: "auto",
+						token: function(token) {
+							var url = "/pay";
+							var request = new XMLHttpRequest();
+							request.open("POST", url, true);
+							request.setRequestHeader("Content-Type", "application/json");
+							request.send(JSON.stringify({
+								token,
+								description,
+								amount,
+								currency,
+								file,
+							}));
+
+							var loadingGif = document.getElementById("loading-gif");
+							var everythingElse = document.getElementById("everything-else");
+
+							loadingGif.style.display = "block";
+							everythingElse.style.display = "none";
+
+							request.onreadystatechange = function(){
+								if (request.status === 200){
+									window.location.replace("/thanks");
+								}
+							};
+						}
+					});
+
+					document.getElementById("customButton").addEventListener("click", function(e) {
+						// Open Checkout with further options:
+						handler.open({
+							name,
 							description,
 							amount,
 							currency,
-						}));
-
-						var loadingGif = document.getElementById("loading-gif");
-						var everythingElse = document.getElementById("everything-else");
-
-						loadingGif.style.display = "block";
-						everythingElse.style.display = "none";
-
-						request.onreadystatechange = function(){
-							if (request.status === 200){
-								window.location.replace("/thanks");
-							}
-						};
-					}
-				});
-
-				document.getElementById("customButton").addEventListener("click", function(e) {
-					// Open Checkout with further options:
-					handler.open({
-						name,
-						description,
-						amount,
-						currency,
+						});
+						e.preventDefault();
 					});
-					e.preventDefault();
-				});
 
-				// Close Checkout on page navigation:
-				window.addEventListener("popstate", function() {
-					handler.close();
-				});
-			};
+					// Close Checkout on page navigation:
+					window.addEventListener("popstate", function() {
+						handler.close();
+					});
+				};
+			})();
 		</script>
 
 	</body>
