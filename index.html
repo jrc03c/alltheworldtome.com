@@ -30,7 +30,7 @@
 								</p>
 
 								<p class="has-text-centered">
-									<button id="customButton" class="button buy-now-button has-background-black has-text-white">Buy now!</button>
+									<a id="customButton" class="button buy-now-button has-background-black has-text-white" href="https://www.amazon.com/dp/B07DCYQSJW">Buy now!</a>
 								</p>
 							</div>
 						</div>
@@ -38,67 +38,5 @@
 				</div>
 			</div>
 		<section>
-
-		<script src="https://checkout.stripe.com/checkout.js"></script>
-
-		<script>
-			(function(){
-				window.onload = function(){
-					var amount = 499;
-					var currency = "usd";
-					var name = "Josh Castle";
-					var description = "All the World to Me";
-					var file = "alltheworldtome.mobi";
-
-					var handler = StripeCheckout.configure({
-						key: "pk_live_NMpP0G7kK3VSQ0BtUWzJO2Ep",
-						image: "https://stripe.com/img/documentation/checkout/marketplace.png",
-						locale: "auto",
-						token: function(token) {
-							var url = "/pay";
-							var request = new XMLHttpRequest();
-							request.open("POST", url, true);
-							request.setRequestHeader("Content-Type", "application/json");
-							request.send(JSON.stringify({
-								token,
-								description,
-								amount,
-								currency,
-								file,
-							}));
-
-							var loadingGif = document.getElementById("loading-gif");
-							var everythingElse = document.getElementById("everything-else");
-
-							loadingGif.style.display = "block";
-							everythingElse.style.display = "none";
-
-							request.onreadystatechange = function(){
-								if (request.status === 200){
-									window.location.replace("/thanks");
-								}
-							};
-						}
-					});
-
-					document.getElementById("customButton").addEventListener("click", function(e) {
-						// Open Checkout with further options:
-						handler.open({
-							name,
-							description,
-							amount,
-							currency,
-						});
-						e.preventDefault();
-					});
-
-					// Close Checkout on page navigation:
-					window.addEventListener("popstate", function() {
-						handler.close();
-					});
-				};
-			})();
-		</script>
-
 	</body>
 </html>
