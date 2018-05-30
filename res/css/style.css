@@ -29,14 +29,15 @@ p {
 }
 
 .button {
-	border-radius: 0;
-	border: 0;
+	/* border-radius: 0; */
+	border: 0.15rem solid black;
 }
 
 .buy-now-button {
 	font-size: 1.25rem;
+	width: 100%;
 }
 
 a {
-	color: red !important;
+	color: black !important;
 }
