@@ -30,7 +30,11 @@ p {
 
 .button {
 	/* border-radius: 0; */
-	border: 0.15rem solid black;
+	border: 0.2rem solid black !important;
+}
+
+.button:hover {
+	border: 0.2rem solid rgb(215, 215, 215) !important;
 }
 
 .buy-now-button {
