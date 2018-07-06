@@ -40,6 +40,8 @@ p {
 .buy-now-button {
 	font-size: 1.25rem;
 	width: 100%;
+	display: block;
+	margin-bottom: 1rem;
 }
 
 a {
