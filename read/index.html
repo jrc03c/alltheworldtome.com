@@ -99,6 +99,10 @@
 				text-align: center;
 			}
 			
+			.img-container {
+				text-align: center;
+			}
+			
 			.title {
 				text-align: center;
 			}
@@ -131,7 +135,9 @@
 			</div>
 			
 			<div v-for="page in pages">
-				<img v-if="page.image" :src="page.image">
+				<div class="img-container">
+					<img v-if="page.image" :src="page.image">
+				</div>
 
 				<h1 v-if="page.title" class="title" v-html="page.title"></h1>
 
