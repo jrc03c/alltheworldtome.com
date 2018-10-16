@@ -29,7 +29,6 @@ p {
 }
 
 .button {
-	/* border-radius: 0; */
 	border: 0.2rem solid black !important;
 }
 
@@ -42,6 +41,7 @@ p {
 	width: 100%;
 	display: block;
 	margin-bottom: 1rem;
+	padding-bottom: 2.25rem !important;
 }
 
 a {
