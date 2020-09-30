@@ -173,7 +173,7 @@
 					mounted: function(){
 						var self = this;
 
-						fetch("./poems.json").then(function(results){
+						fetch("/read/poems.json").then(function(results){
 							results.json().then(function(pages){
 								self.pages = pages;
 							});
