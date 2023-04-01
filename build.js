@@ -7,45 +7,20 @@ const path = require("path")
 const process = require("process")
 const watch = require("@jrc03c/watch")
 
-function copySync(a, b) {
-  if (fs.statSync(a).isDirectory()) {
-    const aFiles = fsx.getFilesDeepSync(a)
-
-    aFiles.forEach(aFile => {
-      const aFileRelativePath = aFile.replace(a, "")
-      const bFile = path.join(b, aFileRelativePath)
-      copySync(aFile, bFile)
-    })
-  } else {
-    const bDir = b.split("/").slice(0, -1).join("/")
-
-    if (!fs.existsSync(bDir)) {
-      fs.mkdirSync(bDir, { recursive: true })
-    }
-
-    fs.copyFileSync(a, b)
-  }
-}
-
 async function rebuild() {
   console.log("-----")
   console.log(`Rebuilding... (${new Date().toLocaleString()})`)
 
   try {
-    const srcDir = path.join(__dirname, "src")
-    const distDir = path.join(__dirname, "dist")
+    const template = fs.readFileSync(
+      path.join(__dirname, "template.html"),
+      "utf8"
+    )
 
-    if (!fs.existsSync(distDir)) {
-      fs.mkdirSync(distDir)
-    }
-
-    copySync(path.join(srcDir, "res"), path.join(distDir, "res"))
-
-    const indexRaw = fs.readFileSync(path.join(srcDir, "index.html"), "utf8")
     const md = new MarkdownIt()
 
     const poems = JSON.parse(
-      fs.readFileSync(path.join(srcDir, "poems.json"), "utf8")
+      fs.readFileSync(path.join(__dirname, "poems.json"), "utf8")
     ).map(poem => {
       poem.content = poem.content
         .split(" || ")
@@ -60,8 +35,8 @@ async function rebuild() {
 
     const data = { poems }
     const liquid = new Liquid()
-    const indexRendered = await liquid.parseAndRender(indexRaw, data)
-    fs.writeFileSync(path.join(distDir, "index.html"), indexRendered, "utf8")
+    const rendered = await liquid.parseAndRender(template, data)
+    fs.writeFileSync(path.join(__dirname, "index.html"), rendered, "utf8")
 
     console.log("Done! 🎉")
   } catch (e) {
@@ -71,7 +46,7 @@ async function rebuild() {
 
 if (process.argv.indexOf("--watch") > -1) {
   watch({
-    target: path.join(__dirname, "src"),
+    target: path.resolve(__dirname),
     exclude: ["node_modules"],
     created: rebuild,
     modified: rebuild,
@@ -82,7 +57,7 @@ if (process.argv.indexOf("--watch") > -1) {
 
   server.use(
     "/",
-    express.static(path.join(__dirname, "dist"), { extensions: ["html"] })
+    express.static(path.join(__dirname), { extensions: ["html"] })
   )
 
   server.listen(8000, () => {
