@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@jrc03c/fs-extras": "^0.0.5",
+    "@jrc03c/watch": "^0.0.2",
+    "express": "^4.18.2",
+    "liquidjs": "^10.7.0",
+    "markdown-it": "^13.0.1"
+  }
+}

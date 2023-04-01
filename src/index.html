@@ -31,18 +31,30 @@
 				<div class="columns">
 					<div class="column is-6 is-offset-3">
 						<div class="has-text-centered header">
-							<img src="./res/img/boat.jpg">
+							<img src="/res/img/boat.jpg" class="header-image">
 							<h1 class="title">All the World to Me</h1>
 							<h3 class="subtitle">by Josh Castle</h3>
 						</div>
 
-						<div>
-							<p class="has-text-centered">
-								<i>All the World to Me</i> is a book of poems for children.
-							</p>
+						<hr>
 
-							<a class="button buy-now-button" href="/read"><b>Read online! (Free)</b></a>
-						</div>
+						{% for poem in poems %}
+							<div class="img-container">
+								<img src="{{ poem.image }}" />
+							</div>
+			
+							<h1 class="title">
+								{{ poem.title }}
+							</h1>
+			
+							<div class="poem">
+								<div class="poem-inner">
+									{{ poem.content }}
+								</div>
+							</div>
+			
+							<hr />
+						{% endfor %}
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,85 @@
+* {
+  color: black !important;
+}
+
+body {
+  margin: 2rem;
+  padding: 0;
+  border: 0;
+  font-family: "Cormorant Garamond", serif, monospace;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+img {
+  margin-bottom: 2rem;
+  width: calc(320px - 4rem);
+}
+
+img.header-image {
+  width: auto;
+  max-width: 100%;
+  margin-bottom: 4rem;
+}
+
+h1 {
+  margin: 0 0 1rem 0;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+p {
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+.line {
+  padding: 0 0 0 2rem;
+  text-indent: -2rem;
+  margin: 0;
+}
+
+hr {
+  background-color: black;
+  margin: 4rem 0;
+  padding: 0.1rem;
+  border: 0;
+}
+
+hr:first-child {
+  margin-top: 0;
+}
+
+.img-container {
+  text-align: center;
+}
+
+.poem {
+  text-align: center;
+}
+
+.poem-inner {
+  display: inline-block;
+  text-align: left;
+}
+
+@media (max-width: 320px) {
+  body {
+    font-size: 1em;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
