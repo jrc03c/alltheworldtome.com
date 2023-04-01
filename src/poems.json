@@ -1,76 +1,76 @@
 [
   {
-    "image": "/res/img/rain.png",
+    "image": "res/img/rain.png",
     "title": "Rain",
     "content": "Gently, sweetly, taps the rain, || Slithers down the window pane, || Rushes out into the lane || To be swallowed by the drain."
   },
   {
-    "image": "/res/img/boat.png",
+    "image": "res/img/boat.png",
     "title": "Thunder",
     "content": "Thunder, thunder, crashes in the night! || Under, wonder, dashes with the light! || Blunder, sunder, everything in sight! || Thunder, thunder, gives me such a fright!"
   },
   {
-    "image": "/res/img/wind.png",
+    "image": "res/img/wind.png",
     "title": "Wind",
     "content": "Whistle the thistle, rustle the tree, || Quiver the river, ruffle the sea. || Whither, oh, shall I go, shall I blow, shall I know? || Thither, oh, shall I go, where I'll be free!"
   },
   {
-    "image": "/res/img/snow.png",
+    "image": "res/img/snow.png",
     "title": "Snow",
     "content": "It's so cold and white and snowy, || And the bitter wind is blowy, || And the village lights at night || Are warm and glowy. || &nbsp; || Such a scene is quaint and lovely; || Both my hands are snug and glovely, || And the stars are glittering || So bright abovely."
   },
   {
-    "image": "/res/img/plane.png",
+    "image": "res/img/plane.png",
     "title": "Planes",
     "content": "I'm afraid of airplanes; || Maybe you are, too? || If we fly together, || Could I sit with you?"
   },
   {
-    "image": "/res/img/train.png",
+    "image": "res/img/train.png",
     "title": "Trains",
     "content": "I'd dearly love to ride a train || On mountain top or lowly plain, || To see the beauties of the world || Before my thirsty eyes unfurled, || To watch the fluffy clouds whiz by, || To find the lonely deserts dry, || To cross a river on a bridge, || To skirt a canyon on a ridge, || To skate the tundra cold and bleak, || To glide upon the highest peak, || To slide down into forests lush, || To hear the valley's twilit hush, || To rumble through the whirling night, || To slumber in the starry light. || Oh, how I'd love to ride a train, || Especially if it would rain!"
   },
   {
-    "image": "/res/img/car.png",
+    "image": "res/img/car.png",
     "title": "Automobiles",
     "content": "Up and down and up and down, || Over hill and into town, || Out across the countryside || With the highway as our guide, || We ride!"
   },
   {
-    "image": "/res/img/chair.png",
+    "image": "res/img/chair.png",
     "title": "Five Things",
     "content": "Beneath the wood dresser, there lie these five things: || A marble, a nickel, a pen, and two rings. || These gems are too lovely to grace such a tomb; || I'll keep them all safe in a box in my room."
   },
   {
-    "image": "/res/img/mouse.png",
+    "image": "res/img/mouse.png",
     "title": "Small",
     "content": "I wish to be tiny, I wish to be small, || I wish to be nothing and no one at all; || I wish to be hidden somewhere in this house: || A ghost in the walls or a little grey mouse."
   },
   {
-    "image": "/res/img/fruit.png",
+    "image": "res/img/fruit.png",
     "title": "Raspberry Jam",
     "content": "Raspberry, strawberry, blackberry jam! || How wondrously, splendidly sticky I am! || And would I like seconds? Yes, sir! and yes, ma'am! || Of raspberry, strawberry, blackberry jam!"
   },
   {
-    "image": "/res/img/wise.png",
+    "image": "res/img/wise.png",
     "title": "Who is Wise?",
     "content": "Oh, who is wise, my darling? || Oh, who is wise, my love? || And shall you know the truth, dear, || When someone speaks thereof? || &nbsp; || For certainty is fickle: || In dogma can it end; || And rhetorics coercive || Our plainest meanings bend. || &nbsp; || The narrow path is muddled || By errors and misdeeds, || By slickened slopes and herrings, || By straw men and their creeds. || &nbsp; || Oh, who is wise, my darling? || Oh, who is wise, my sweet? || And shall you sift the truth, love, || When fallacies accrete? || &nbsp; || But hark unto the list'ner, || And imitate the kind, || For wisdom is convergence || Of every open mind. || &nbsp; || Be slow in judgment ever, || Yet never cease to seek || The thoughtful, honest conduct, || The truest words to speak."
   },
   {
-    "image": "/res/img/night.png",
+    "image": "res/img/night.png",
     "title": "Goodnight Song",
     "content": "And when you speak those words to me || As sweet and low as words can be, || The breeze slides gently o'er the sill || With murmurs of the distant rill, || With fragrance from the little grove || Of twilit grass and humble clove; || And crickets in the darkness sing || With stars and planets spiraling; || And sleep dissolves the worried knot, || The frayed and tangled day forgot. || I reach for you, to pull you near, || To hear your whisper in my ear, || To trace your curves with fingertips. || To feel the smile upon your lips, || For you mean all the world, you see; || For you mean all the world to me."
   },
   {
-    "image": "/res/img/sleep.png",
+    "image": "res/img/sleep.png",
     "title": "I'd Rather Not Sleep",
     "content": "Of my life, a whole third! || It's too much; it's absurd! || For what crime have I this || Lengthy sentence incurred? || &nbsp; || To be conscious, I doze; || To awake, I repose; || A few changes to this || Regimen I propose! || &nbsp; || I would rather not snooze: || There's so much time to lose! || There are so many other || Endeavors I'd choose! || &nbsp; || So, please don't let me sleep || And I promise (yawn) to keep... || Um...And something and something... || And counting...the sheep...(zzz...)"
   },
   {
-    "image": "/res/img/birds.png",
+    "image": "res/img/birds.png",
     "title": "Little Bird",
     "content": "So far I am from home, little bird, || So far I am from home. || I did not choose to roam, little bird, || I did not choose to roam. || I chased a shiny thing, little bird, || I chased a shiny thing. || I took up on the wing, little bird, || I took up on the wing. || &nbsp; || _The night is falling and_ || _The wood is calling and_ || _The land is sprawling out before me._ || _The stars, my heading; and_ || _The wind, my bedding; and_ || _The shadows spreading go before me._ || &nbsp; || The whirlwind bore me long, little bird, || The whirlwind bore me long. || I sang this hurting song, little bird, || I sang this hurting song. || My heart aches for the nest, little bird, || My heart aches for the nest. || I long my wings to rest, little bird, || I long my wings to rest. || &nbsp; || _The night is falling and_ || _The wood is calling and_ || _The land is sprawling out before me._ || _The stars, my heading; and_ || _The wind, my bedding; and_ || _The shadows spreading go before me._"
   },
   {
-    "image": "/res/img/fireflies.png",
+    "image": "res/img/fireflies.png",
     "title": "Fireflies",
     "content": "Green stars a-shimmering, green orbs alight, || Green glitters glimmering, all through the night. || &nbsp; || _Sing of the fireflies, sing of the sea,_ || _Sing while the fire dies, softly for me._ || &nbsp; || My mother humming low, my sister too, || My heart a thrumming glow with joy anew. || &nbsp; || _Sing of the fireflies, sing of the sea,_ || _Sing while the fire dies, softly for me._ || &nbsp; || My father sailing far, my brother too, || My soul, the trailing star bravely pursue. || &nbsp; || _Sing of the fireflies, sing of the sea,_ || _Sing while the fire dies, softly for me._ || &nbsp; || Come not the light of morn, come not the day, || Come only night reborn, ever to stay. || &nbsp; || _Sing of the fireflies, sing of the sea,_ || _Sing while the fire dies, softly for me._"
   }
