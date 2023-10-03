@@ -1,45 +1,45 @@
 <html>
-	<head>
-		<title>All the World to Me</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" rel="stylesheet">
-		<link href="res/css/style.css" rel="stylesheet">
-	</head>
-	<body>
-		<section class="section">
-			<div class="container">
-				<div class="columns">
-					<div class="column is-6 is-offset-3">
-						<div class="has-text-centered header">
-							<img src="res/img/boat.jpg" class="header-image">
-							<h1 class="title">All the World to Me</h1>
-							<h3 class="subtitle">by Josh Castle</h3>
-						</div>
+  <head>
+    <title>All the World to Me</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Cormorant+Garamond"
+      rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
+      rel="stylesheet" />
+    <link href="res/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-6 is-offset-3">
+            <div class="has-text-centered header">
+              <img src="res/img/boat.jpg" class="header-image" />
+              <h1 class="title">All the World to Me</h1>
+              <h3 class="subtitle">by Josh Castle</h3>
+            </div>
 
-						<hr>
+            <hr />
 
-						{% for poem in poems %}
-							<div class="img-container">
-								<img src="{{ poem.image }}" />
-							</div>
-			
-							<h1 class="title">
-								{{ poem.title }}
-							</h1>
-			
-							<div class="poem">
-								<div class="poem-inner">
-									{{ poem.content }}
-								</div>
-							</div>
-			
-							<hr />
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		<section>
-	</body>
+            {% for poem in poems %}
+            <div class="img-container">
+              <img src="{{ poem.image }}" />
+            </div>
+
+            <h1 class="title">{{ poem.title }}</h1>
+
+            <div class="poem">
+              <div class="poem-inner">{{ poem.content }}</div>
+            </div>
+
+            <hr />
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

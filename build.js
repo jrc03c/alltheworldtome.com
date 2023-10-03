@@ -1,7 +1,7 @@
+const { execSync } = require("child_process")
 const { Liquid } = require("liquidjs")
 const express = require("express")
 const fs = require("fs")
-const fsx = require("@jrc03c/fs-extras")
 const MarkdownIt = require("markdown-it")
 const path = require("path")
 const process = require("process")
@@ -14,13 +14,13 @@ async function rebuild() {
   try {
     const template = fs.readFileSync(
       path.join(__dirname, "template.html"),
-      "utf8"
+      "utf8",
     )
 
     const md = new MarkdownIt()
 
     const poems = JSON.parse(
-      fs.readFileSync(path.join(__dirname, "poems.json"), "utf8")
+      fs.readFileSync(path.join(__dirname, "poems.json"), "utf8"),
     ).map(poem => {
       poem.content = poem.content
         .split(" || ")
@@ -38,6 +38,10 @@ async function rebuild() {
     const rendered = await liquid.parseAndRender(template, data)
     fs.writeFileSync(path.join(__dirname, "index.html"), rendered, "utf8")
 
+    execSync(`npx prettier -w "${path.join(__dirname, "index.html")}"`, {
+      encoding: "utf8",
+    })
+
     console.log("Done! 🎉")
   } catch (e) {
     console.error(e)
@@ -47,7 +51,7 @@ async function rebuild() {
 if (process.argv.indexOf("--watch") > -1) {
   watch({
     target: path.resolve(__dirname),
-    exclude: ["node_modules"],
+    exclude: ["index.html", "node_modules"],
     created: rebuild,
     modified: rebuild,
     deleted: rebuild,
@@ -57,7 +61,7 @@ if (process.argv.indexOf("--watch") > -1) {
 
   server.use(
     "/",
-    express.static(path.join(__dirname), { extensions: ["html"] })
+    express.static(path.join(__dirname), { extensions: ["html"] }),
   )
 
   server.listen(8000, () => {
