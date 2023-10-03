@@ -9,7 +9,7 @@
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
       rel="stylesheet" />
-    <link href="res/css/style.css" rel="stylesheet" />
+    <link href="{{ base_path }}/res/css/style.css" rel="stylesheet" />
   </head>
   <body>
     <section class="section">
@@ -17,7 +17,9 @@
         <div class="columns">
           <div class="column is-6 is-offset-3">
             <div class="has-text-centered header">
-              <img src="res/img/boat.jpg" class="header-image" />
+              <img
+                src="{{ base_path }}/res/img/boat.jpg"
+                class="header-image" />
               <h1 class="title">All the World to Me</h1>
               <h3 class="subtitle">by Josh Castle</h3>
             </div>
@@ -26,7 +28,7 @@
 
             {% for poem in poems %}
             <div class="img-container">
-              <img src="{{ poem.image }}" />
+              <img src="{{ base_path }}/{{ poem.image }}" />
             </div>
 
             <h1 class="title">{{ poem.title }}</h1>

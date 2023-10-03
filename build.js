@@ -9,6 +9,11 @@ const watch = require("@jrc03c/watch")
 
 async function rebuild() {
   console.log("-----")
+
+  console.log(
+    "NOTE: Remember that you can specify a base path with -b or --base-path!",
+  )
+
   console.log(`Rebuilding... (${new Date().toLocaleString()})`)
 
   try {
@@ -33,14 +38,25 @@ async function rebuild() {
       return poem
     })
 
-    const data = { poems }
+    const basePath = (() => {
+      const arg = process.argv.find(a => a.includes("--base-path"))
+      const index = process.argv.indexOf("-b")
+
+      if (arg) {
+        return arg.split("=").at(-1)
+      } else if (index > -1) {
+        return process.argv[index + 1]
+      } else {
+        return "."
+      }
+    })()
+
+    const data = { poems, base_path: basePath }
     const liquid = new Liquid()
     const rendered = await liquid.parseAndRender(template, data)
-    fs.writeFileSync(path.join(__dirname, "index.html"), rendered, "utf8")
-
-    execSync(`npx prettier -w "${path.join(__dirname, "index.html")}"`, {
-      encoding: "utf8",
-    })
+    const outfile = path.join(__dirname, "index.html")
+    fs.writeFileSync(outfile, rendered, "utf8")
+    execSync(`npx prettier -w "${outfile}"`, { encoding: "utf8" })
 
     console.log("Done! 🎉")
   } catch (e) {
@@ -51,7 +67,7 @@ async function rebuild() {
 if (process.argv.indexOf("--watch") > -1) {
   watch({
     target: path.resolve(__dirname),
-    exclude: ["index.html", "node_modules"],
+    exclude: ["build.js", "index.html", "node_modules"],
     created: rebuild,
     modified: rebuild,
     deleted: rebuild,
