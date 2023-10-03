@@ -10,9 +10,11 @@ const watch = require("@jrc03c/watch")
 async function rebuild() {
   console.log("-----")
 
-  console.log(
-    "NOTE: Remember that you can specify a base path with -b or --base-path!",
-  )
+  if (basePath === ".") {
+    console.log(
+      "NOTE: Remember that you can specify a base path with -b or --base-path!",
+    )
+  }
 
   console.log(`Rebuilding... (${new Date().toLocaleString()})`)
 
@@ -38,19 +40,6 @@ async function rebuild() {
       return poem
     })
 
-    const basePath = (() => {
-      const arg = process.argv.find(a => a.includes("--base-path"))
-      const index = process.argv.indexOf("-b")
-
-      if (arg) {
-        return arg.split("=").at(-1)
-      } else if (index > -1) {
-        return process.argv[index + 1]
-      } else {
-        return "."
-      }
-    })()
-
     const data = { poems, base_path: basePath }
     const liquid = new Liquid()
     const rendered = await liquid.parseAndRender(template, data)
@@ -64,6 +53,19 @@ async function rebuild() {
   }
 }
 
+const basePath = (() => {
+  const arg = process.argv.find(a => a.includes("--base-path"))
+  const index = process.argv.indexOf("-b")
+
+  if (arg) {
+    return arg.split("=").at(-1)
+  } else if (index > -1) {
+    return process.argv[index + 1]
+  } else {
+    return "."
+  }
+})()
+
 if (process.argv.indexOf("--watch") > -1) {
   watch({
     target: path.resolve(__dirname),
@@ -76,12 +78,16 @@ if (process.argv.indexOf("--watch") > -1) {
   const server = express()
 
   server.use(
-    "/",
+    basePath === "." ? "/" : path.join(basePath, "/"),
     express.static(path.join(__dirname), { extensions: ["html"] }),
   )
 
   server.listen(8000, () => {
-    console.log("Listening at http://localhost:8000...")
+    console.log(
+      `Listening at http://localhost:8000${
+        basePath === "." ? "" : basePath
+      }...`,
+    )
   })
 }
 
